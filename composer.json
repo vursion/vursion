@@ -1,0 +1,41 @@
+{
+    "name": "vursion/vursion",
+    "description": "vursion",
+    "keywords": [
+        "vursion",
+        "laravel"
+    ],
+    "homepage": "https://github.com/vursion/vursion",
+    "license": null,
+    "type": "library",
+    "authors": [
+        {
+            "name": "Jochen Sengier",
+            "email": "jochen@celcius.be",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^5.4 || ^7.0"
+    },
+    "require-dev": {
+        "guzzlehttp/guzzle": "^5.0|^6.0",
+        "vlucas/phpdotenv": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vursion\\Vursion\\": "src"
+        }
+    },
+    "scripts": null,
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Vursion\\Vursion\\VursionServiceProvider"
+            ]
+        }
+    }
+}
