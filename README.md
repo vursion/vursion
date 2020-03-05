@@ -19,6 +19,7 @@ php artisan vendor:publish --provider="Vursion\Vursion\VursionServiceProvider"
 ```
 
 **Don't forget to add the cron job needed to trigger Laravel’s scheduling!**
+
 Please see https://laravel.com/docs/master/scheduling for more information on adding the Cron entry to your server.
 
 ### Changelog
