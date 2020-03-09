@@ -9,4 +9,4 @@ Route::get('vursion', function () {
 	if ($success) {
 		return response()->json($matches[1]);
 	}
-})->name('vursion');
+})->name('vursion')->middleware((version_compare(app()->version(), '5.6.12') >= 0) ? 'signed' : null);

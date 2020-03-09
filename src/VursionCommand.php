@@ -47,7 +47,13 @@ class VursionCommand extends Command
 
 	protected function getPhpVersion()
 	{
-		$response = $this->guzzle->get(route('vursion'));
+		$url = route('vursion');
+
+		if (version_compare(app()->version(), '5.6.12') >= 0) {
+			$url .= '?signature=' . hash_hmac('sha256', $url, env('APP_KEY'));
+		}
+
+		$response = $this->guzzle->get($url);
 
 		if ($response->getStatusCode() === 200) {
 			return json_decode($response->getBody()->getContents());
