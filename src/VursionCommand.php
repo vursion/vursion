@@ -66,10 +66,20 @@ class VursionCommand extends Command
 			return;
 		}
 
-		$dotenv = Dotenv::create(base_path(), $file);
-		$dotenv->load();
+		try {
+			$dotenv = Dotenv::create(base_path(), $file);
+		} catch (Exception $e) {
+			$repository = \Dotenv\Repository\RepositoryBuilder::create()
+			    ->withReaders([
+					new \Dotenv\Repository\Adapter\EnvConstAdapter(),
+					new \Dotenv\Repository\Adapter\ServerConstAdapter(),
+				])
+			    ->make();
 
-		return $dotenv->getEnvironmentVariableNames();
+			$dotenv = Dotenv::create($repository, base_path(), $file);
+		}
+
+		return array_keys($dotenv->load());
 	}
 
 	protected function getComposer()
