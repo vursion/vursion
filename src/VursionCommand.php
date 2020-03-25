@@ -66,20 +66,26 @@ class VursionCommand extends Command
 			return;
 		}
 
-		try {
-			$dotenv = Dotenv::create(base_path(), $file);
-		} catch (Exception $e) {
-			$repository = \Dotenv\Repository\RepositoryBuilder::create()
-			    ->withReaders([
-					new \Dotenv\Repository\Adapter\EnvConstAdapter(),
-					new \Dotenv\Repository\Adapter\ServerConstAdapter(),
-				])
-			    ->make();
+		$phpdotenv = collect($this->getComposerLock()['packages']->get('vlucas/phpdotenv'));
 
-			$dotenv = Dotenv::create($repository, base_path(), $file);
+		if ($phpdotenv) {
+			$phpdotenv = (int) explode('.', preg_replace('/[^0-9.]/', '', $phpdotenv))[0];
+
+			if ($phpdotenv < 4) {
+				$dotenv = Dotenv::create(base_path(), $file);
+			} else {
+				$repository = \Dotenv\Repository\RepositoryBuilder::create()
+				    ->withReaders([
+						new \Dotenv\Repository\Adapter\EnvConstAdapter(),
+						new \Dotenv\Repository\Adapter\ServerConstAdapter(),
+					])
+				    ->make();
+
+				$dotenv = Dotenv::create($repository, base_path(), $file);
+			}
+
+			return array_keys($dotenv->load());
 		}
-
-		return array_keys($dotenv->load());
 	}
 
 	protected function getComposer()

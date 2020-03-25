@@ -2,6 +2,10 @@
 
 All notable changes to `vursion` will be documented in this file
 
+## 0.0.4 - 2020-03-25
+
+- Support both v3 and v4 of vlucas\phpdotenv.
+
 ## 0.0.3 - 2020-03-20
 
 - Support both v3 and v4 of vlucas\phpdotenv.
