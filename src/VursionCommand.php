@@ -16,33 +16,39 @@ class VursionCommand extends Command
 
 	protected $guzzle;
 
+	protected $key;
+
 	public function __construct()
 	{
 		parent::__construct();
+
+		$this->key = config('vursion.key');
 
 		$this->guzzle = new Client([
 			'base_uri'    => 'https://www.vursion.io/api/v1/',
 			'http_errors' => false,
 			'verify'      => false,
 			'headers' 	  => [
-				'vursion-key' => config('vursion.key'),
+				'vursion-key' => $this->key,
 			],
 		]);
 	}
 
 	public function handle()
 	{
-		$this->guzzle->post('heartbeat', [
-			'json' => [
-				'env'             => $this->getEnvironmentVariableNames('.env'),
-				'env.example'     => $this->getEnvironmentVariableNames('.env.example'),
-				'composer.json'   => $this->getComposer(),
-				'composer.lock'   => $this->getComposerLock(),
-				'laravel_version' => app()->version(),
-				'php_version' 	  => $this->getPhpVersion(),
-				'php_version_cli' => phpversion(),
-			],
-		]);
+		if ($this->key && $this->key !== '') {
+			$this->guzzle->post('heartbeat', [
+				'json' => [
+					'env'             => $this->getEnvironmentVariableNames('.env'),
+					'env.example'     => $this->getEnvironmentVariableNames('.env.example'),
+					'composer.json'   => $this->getComposer(),
+					'composer.lock'   => $this->getComposerLock(),
+					'laravel_version' => app()->version(),
+					'php_version' 	  => $this->getPhpVersion(),
+					'php_version_cli' => phpversion(),
+				],
+			]);
+		}
 	}
 
 	protected function getPhpVersion()

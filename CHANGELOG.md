@@ -2,6 +2,10 @@
 
 All notable changes to `vursion` will be documented in this file
 
+## 0.0.5 - 2020-03-31
+
+- Only send data if API key is set.
+
 ## 0.0.4 - 2020-03-25
 
 - Support both v3 and v4 of vlucas\phpdotenv.
