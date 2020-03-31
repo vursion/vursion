@@ -2,6 +2,10 @@
 
 All notable changes to `vursion` will be documented in this file
 
+## 0.0.6 - 2020-03-31
+
+- Use URL::signedRoute() on Laravel installations >= 5.6.12 instead of calculating the hash ourselves.
+
 ## 0.0.5 - 2020-03-31
 
 - Only send data if API key is set.
