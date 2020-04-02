@@ -2,6 +2,10 @@
 
 All notable changes to `vursion` will be documented in this file
 
+## 0.0.8 - 2020-04-02
+
+- Fix package dependencies.
+
 ## 0.0.7 - 2020-04-02
 
 - Use a setting to enable/disable sending data to the API.
