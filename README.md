@@ -18,6 +18,18 @@ To publish the config file to `config/vursion.php` run:
 php artisan vendor:publish --provider="Vursion\Vursion\VursionServiceProvider"
 ```
 
+This is the contents of the published config-file:
+
+```php
+return [
+
+    'key' => env('VURSION_KEY'),
+
+    'enabled' => env('VURSION_ENABLED', true),
+
+];
+```
+
 **Don't forget to add the cron job needed to trigger Laravel’s scheduling!**
 
 Please see https://laravel.com/docs/master/scheduling for more information on adding the Cron entry to your server.
