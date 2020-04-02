@@ -45,3 +45,7 @@ If you discover any security related issues, please email jochen@celcius.be inst
 ## Credits
 
 - [Jochen Sengier](https://github.com/celcius-jochen)
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
