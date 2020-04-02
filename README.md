@@ -30,15 +30,15 @@ return [
 ];
 ```
 
-**Don't forget to add the cron job needed to trigger Laravel’s scheduling!**
+### Don't forget to add the cron job needed to trigger Laravel’s scheduling!
 
 Please see https://laravel.com/docs/master/scheduling for more information on adding the Cron entry to your server.
 
-### Changelog
+## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
 
-### Security
+## Security
 
 If you discover any security related issues, please email jochen@celcius.be instead of using the issue tracker.
 
