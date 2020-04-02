@@ -18,7 +18,7 @@ To publish the config file to `config/vursion.php` run:
 php artisan vendor:publish --provider="Vursion\Vursion\VursionServiceProvider"
 ```
 
-This is the contents of the published config-file:
+This is the content of the published config file:
 
 ```php
 return [
