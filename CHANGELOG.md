@@ -2,6 +2,10 @@
 
 All notable changes to `vursion` will be documented in this file
 
+## 0.0.9 - 2020-05-14
+
+- Fix possible NamespaceNotFoundException.
+
 ## 0.0.8 - 2020-04-02
 
 - Fix package dependencies.

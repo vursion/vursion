@@ -21,15 +21,15 @@ class VursionServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__.'/../config/config.php' => config_path('vursion.php'),
             ], 'config');
-
-            $this->commands([
-                VursionCommand::class
-            ]);
         }
     }
 
     public function register()
     {
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'vursion');
+
+        $this->commands([
+            VursionCommand::class,
+        ]);
     }
 }
