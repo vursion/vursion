@@ -13,6 +13,11 @@ composer require vursion/vursion
 
 The package will automatically register itself.
 
+Configure your vursion API key in your `.env` file.
+```bash
+VURSION_KEY=
+```
+
 To publish the config file to `config/vursion.php` run:
 ```bash
 php artisan vendor:publish --provider="Vursion\Vursion\VursionServiceProvider"
@@ -32,7 +37,7 @@ return [
 
 ### Don't forget to add the cron job needed to trigger Laravel’s scheduling!
 
-Please see https://laravel.com/docs/master/scheduling for more information on adding the Cron entry to your server.
+Please see https://laravel.com/docs/master/scheduling for more information on adding the cron entry to your server.
 
 ## Changelog
 
