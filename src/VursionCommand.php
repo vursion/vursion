@@ -79,15 +79,16 @@ class VursionCommand extends Command
 
 			if ($phpdotenv < 4) {
 				$dotenv = Dotenv::create(base_path(), $file);
-			} else {
-				$repository = \Dotenv\Repository\RepositoryBuilder::create()
-				    ->withReaders([
-						new \Dotenv\Repository\Adapter\EnvConstAdapter(),
-						new \Dotenv\Repository\Adapter\ServerConstAdapter(),
-					])
-				    ->make();
+			} elseif ($phpdotenv < 5) {
+				$repository = \Dotenv\Repository\RepositoryBuilder::create()->withReaders([
+					new \Dotenv\Repository\Adapter\EnvConstAdapter(),
+					new \Dotenv\Repository\Adapter\ServerConstAdapter(),
+				])->make();
 
 				$dotenv = Dotenv::create($repository, base_path(), $file);
+			} else {
+				$repository = \Dotenv\Repository\RepositoryBuilder::createWithDefaultAdapters()->make();
+				$dotenv     = Dotenv::create($repository, base_path(), $file);
 			}
 
 			return array_keys($dotenv->load());

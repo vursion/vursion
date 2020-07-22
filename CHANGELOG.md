@@ -2,6 +2,11 @@
 
 All notable changes to `vursion` will be documented in this file
 
+## 0.0.10 - 2020-07-22
+
+- Support v5 of vlucas\phpdotenv.
+- Support v7 of guzzle\guzzle.
+
 ## 0.0.9 - 2020-05-14
 
 - Fix possible NamespaceNotFoundException.
