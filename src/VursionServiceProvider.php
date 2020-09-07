@@ -4,6 +4,7 @@ namespace Vursion\Vursion;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Support\ServiceProvider;
+use Vursion\Vursion\PublishCommand;
 use Vursion\Vursion\VursionCommand;
 
 class VursionServiceProvider extends ServiceProvider
@@ -30,6 +31,7 @@ class VursionServiceProvider extends ServiceProvider
 
         $this->commands([
             VursionCommand::class,
+            PublishCommand::class,
         ]);
     }
 }

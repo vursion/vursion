@@ -20,7 +20,7 @@ VURSION_KEY=
 
 To publish the config file to `config/vursion.php` run:
 ```bash
-php artisan vendor:publish --provider="Vursion\Vursion\VursionServiceProvider"
+php artisan vursion:publish
 ```
 
 This is the content of the published config file:
