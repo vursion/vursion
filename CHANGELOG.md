@@ -4,6 +4,8 @@ All notable changes to `vursion` will be documented in this file
 
 ## 0.0.12 - 2020-11-16
  - Support for PHP 8.
+ - Change frequency of scheduled task to every 10 minutes.
+
 ## 0.0.11 - 2020-09-07
 
 - Update package dependencies.

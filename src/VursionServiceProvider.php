@@ -15,7 +15,7 @@ class VursionServiceProvider extends ServiceProvider
 
         $this->app->booted(function () {
             $schedule = $this->app->make(Schedule::class);
-            $schedule->command('vursion:heartbeat')->everyFifteenMinutes();
+            $schedule->command('vursion:heartbeat')->everyTenMinutes();
         });
 
         if ($this->app->runningInConsole()) {
