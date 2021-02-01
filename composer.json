@@ -21,7 +21,8 @@
         "vlucas/phpdotenv": "^2.0 || ^3.0 || ^4.0 || ^5.0"
     },
     "require-dev": {
-        "orchestra/testbench": "^3.0 || ^4.0 || ^5.0 || ^6.0"
+        "orchestra/testbench": "^3.0 || ^4.0 || ^5.0 || ^6.0",
+        "phpunit/phpunit": "^9.5",
     },
     "autoload": {
         "psr-4": {
