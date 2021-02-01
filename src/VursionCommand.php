@@ -55,7 +55,7 @@ class VursionCommand extends Command
 		}
 	}
 
-	protected function getPhpVersion()
+	public function getPhpVersion()
 	{
 		$url = (version_compare(app()->version(), '5.6.12') >= 0) ? \Illuminate\Support\Facades\URL::signedRoute('vursion') : route('vursion');
 
@@ -66,13 +66,13 @@ class VursionCommand extends Command
 		}
 	}
 
-	protected function getEnvironmentVariableNames($file)
+	public function getEnvironmentVariableNames($file)
 	{
 		if (! is_file(base_path($file))) {
 			return;
 		}
 
-		$phpdotenv = collect($this->getComposerLock()['packages']->get('vlucas/phpdotenv'));
+		$phpdotenv = collect($this->getComposerLock()['packages'])->get('vlucas/phpdotenv');
 
 		if ($phpdotenv) {
 			$phpdotenv = (int) explode('.', preg_replace('/[^0-9.]/', '', $phpdotenv))[0];
@@ -95,13 +95,9 @@ class VursionCommand extends Command
 		}
 	}
 
-	protected function getComposer()
+	public function getComposer()
 	{
 		$data = $this->readFileContents('composer.json');
-
-		if (! $data) {
-			return;
-		}
 
 		return [
 			'require' 	   => ($data['require'] ?? null),
@@ -110,21 +106,17 @@ class VursionCommand extends Command
 		];
 	}
 
-	protected function getComposerLock()
+	public function getComposerLock()
 	{
 		$data = $this->readFileContents('composer.lock');
 
-		if (! $data) {
-			return;
-		}
-
-		$packages = collect($data['packages'])->mapWithKeys(function ($package) {
+		$packages = collect(($data['packages'] ?? []))->mapWithKeys(function ($package) {
 			return [$package['name'] => $package['version']];
-		});
+		})->toArray();
 
-		$packages_dev = collect($data['packages-dev'])->mapWithKeys(function ($package) {
+		$packages_dev = collect(($data['packages-dev'] ?? []))->mapWithKeys(function ($package) {
 			return [$package['name'] => $package['version']];
-		});
+		})->toArray();
 
 		return [
 			'packages' 	   => $packages,
@@ -132,7 +124,7 @@ class VursionCommand extends Command
 		];
 	}
 
-	protected function readFileContents($file)
+	public function readFileContents($file)
 	{
 		if (! is_file(base_path($file))) {
 			return;
