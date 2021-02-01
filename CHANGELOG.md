@@ -7,6 +7,7 @@ All notable changes to `vursion` will be documented in this file
  - Add GitHub issue template.
  - Add GitHub test workflow.
  - Add PHPUnit tests.
+ - Support v2 of [vlucas/phpdotenv](https://github.com/vlucas/phpdotenv).
 
 ## 0.0.12 - 2020-11-16
  - Support for PHP 8.

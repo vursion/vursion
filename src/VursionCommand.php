@@ -77,7 +77,9 @@ class VursionCommand extends Command
 		if ($phpdotenv) {
 			$phpdotenv = (int) explode('.', preg_replace('/[^0-9.]/', '', $phpdotenv))[0];
 
-			if ($phpdotenv < 4) {
+			if ($phpdotenv < 3) {
+				$dotenv = new Dotenv(base_path(), $file);
+			} elseif ($phpdotenv < 4) {
 				$dotenv = Dotenv::create(base_path(), $file);
 			} elseif ($phpdotenv < 5) {
 				$repository = \Dotenv\Repository\RepositoryBuilder::create()->withReaders([
