@@ -2,6 +2,12 @@
 
 All notable changes to `vursion` will be documented in this file
 
+## 0.0.13 - 2020-02-01
+ - 🤷‍♂️ Forgot why I parsed the phpinfo() instead of just calling phpversion().
+ - Add GitHub issue template.
+ - Add GitHub test workflow.
+ - Add PHPUnit tests.
+
 ## 0.0.12 - 2020-11-16
  - Support for PHP 8.
  - Change frequency of scheduled task to every 10 minutes.
