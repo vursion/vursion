@@ -76,7 +76,7 @@ class VursionCommand extends Command
 
 		$this->env_file = $file;
 
-		foreach ([5, 4, 3, 2] as $function) {
+		foreach ([2, 3, 4, 5] as $function) {
 			$dotenv = $this->{'dotenv_' . $function}();
 
 			if ($dotenv) {
