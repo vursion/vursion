@@ -17,7 +17,7 @@ abstract class TestCase extends Orchestra
 
     protected $stub_env;
 
-    public function setUp(): void
+    public function setUp()
     {
         parent::setUp();
 
