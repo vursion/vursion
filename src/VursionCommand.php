@@ -127,6 +127,7 @@ class VursionCommand extends Command
 	{
 		try {
 			$dotenv = new Dotenv(base_path(), $this->env_file);
+			$dotenv->load();
 
 			return $dotenv->getEnvironmentVariableNames();
 		} catch (\TypeError $error) {
@@ -140,6 +141,7 @@ class VursionCommand extends Command
 	{
 		try {
 			$dotenv = Dotenv::create(base_path(), $this->env_file);
+			$dotenv->load();
 
 			return $dotenv->getEnvironmentVariableNames();
 		} catch (\TypeError $error) {
