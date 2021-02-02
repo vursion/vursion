@@ -17,7 +17,7 @@ abstract class TestCase extends Orchestra
 
     protected $stub_env;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -33,9 +33,9 @@ abstract class TestCase extends Orchestra
 
     protected function loadStubs()
     {
-		$this->stub_composer      = json_decode(file_get_contents(dirname(__DIR__) . '/Stubs/composer.json'), true);
-		$this->stub_composer_lock = json_decode(file_get_contents(dirname(__DIR__) . '/Stubs/composer.lock'), true);
-		$this->stub_env           = file_get_contents(dirname(__DIR__) . '/Stubs/.env.test');
+		$this->stub_composer      = json_decode(file_get_contents(__DIR__ . '/Stubs/composer.json'), true);
+		$this->stub_composer_lock = json_decode(file_get_contents(__DIR__ . '/Stubs/composer.lock'), true);
+		$this->stub_env           = file_get_contents(__DIR__ . '/Stubs/.env.test');
     }
 
     protected function mockComposer()
