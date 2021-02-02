@@ -33,6 +33,9 @@ class VursionTest extends TestCase
         $data = $this->mock->getEnvironmentVariableNames('.env.test');
 
         $this->assertTrue(is_array($data));
+
+        $data = array_filter($data);
+
         $this->assertNotEmpty($data);
 
         $this->assertEquals(['VURSION_KEY'], $data);
