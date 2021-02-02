@@ -28,7 +28,6 @@ class VursionTest extends TestCase
 
     public function test_it_can_collect_env_keys()
     {
-        $this->mockComposerLock();
         $this->mockEnv();
 
         $data = $this->mock->getEnvironmentVariableNames('.env.test');

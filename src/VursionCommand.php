@@ -20,6 +20,8 @@ class VursionCommand extends Command
 
 	protected $enabled;
 
+	protected $env_file;
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -72,28 +74,14 @@ class VursionCommand extends Command
 			return;
 		}
 
-		$phpdotenv = collect($this->getComposerLock()['packages'])->get('vlucas/phpdotenv');
+		$this->env_file = $file;
 
-		if ($phpdotenv) {
-			$phpdotenv = (int) explode('.', preg_replace('/[^0-9.]/', '', $phpdotenv))[0];
+		foreach ([5, 4, 3, 2] as $function) {
+			$dotenv = $this->{'dotenv_' . $function}();
 
-			if ($phpdotenv < 3) {
-				$dotenv = new Dotenv(base_path(), $file);
-			} elseif ($phpdotenv < 4) {
-				$dotenv = Dotenv::create(base_path(), $file);
-			} elseif ($phpdotenv < 5) {
-				$repository = \Dotenv\Repository\RepositoryBuilder::create()->withReaders([
-					new \Dotenv\Repository\Adapter\EnvConstAdapter(),
-					new \Dotenv\Repository\Adapter\ServerConstAdapter(),
-				])->make();
-
-				$dotenv = Dotenv::create($repository, base_path(), $file);
-			} else {
-				$repository = \Dotenv\Repository\RepositoryBuilder::createWithDefaultAdapters()->make();
-				$dotenv     = Dotenv::create($repository, base_path(), $file);
+			if ($dotenv) {
+				return array_keys($dotenv->load());
 			}
-
-			return array_keys($dotenv->load());
 		}
 	}
 
@@ -133,5 +121,47 @@ class VursionCommand extends Command
 		}
 
 		return json_decode(file_get_contents(base_path($file)), true);
+	}
+
+	protected function dotenv_2()
+	{
+		try {
+			return new Dotenv(base_path(), $this->env_file);
+		} catch (Exception $e) {
+			return;
+		}
+	}
+
+	protected function dotenv_3()
+	{
+		try {
+			return Dotenv::create(base_path(), $this->env_file);
+		} catch (Exception $e) {
+			return;
+		}
+	}
+
+	protected function dotenv_4()
+	{
+		try {
+			$repository = \Dotenv\Repository\RepositoryBuilder::create()->withReaders([
+				new \Dotenv\Repository\Adapter\EnvConstAdapter(),
+				new \Dotenv\Repository\Adapter\ServerConstAdapter(),
+			])->make();
+
+			return Dotenv::create($repository, base_path(), $this->env_file);
+		} catch (Exception $e) {
+			return;
+		}
+	}
+
+	protected function dotenv_5()
+	{
+		try {
+			$repository = \Dotenv\Repository\RepositoryBuilder::createWithDefaultAdapters()->make();
+			return Dotenv::create($repository, base_path(), $this->env_file);
+		} catch (Exception $e) {
+			return;
+		}
 	}
 }
