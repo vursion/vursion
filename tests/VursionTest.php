@@ -33,7 +33,7 @@ class VursionTest extends TestCase
         $data = $this->mock->getEnvironmentVariableNames('.env.test');
 
         $this->assertTrue(is_array($data));
-        $this->assertArrayHasKey('VURSION_KEY', $data);
+        $this->assertArrayHasKey('VURSION_KEY', array_flip($data));
     }
 
     public function test_it_can_collect_composer_json()
