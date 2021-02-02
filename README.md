@@ -1,4 +1,5 @@
-# vursion
+# VURSION
+The missing monitor!
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/vursion/vursion.svg?style=flat-square)](https://packagist.org/packages/vursion/vursion)
 ![Tests](https://github.com/vursion/vursion/workflows/tests/badge.svg)
