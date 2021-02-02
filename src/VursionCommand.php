@@ -76,10 +76,15 @@ class VursionCommand extends Command
 
 		$this->env_file = $file;
 
+		set_error_handler(function ($errno, $errstr) {
+		});
+
 		foreach ([5, 4, 3, 2] as $function) {
 			$dotenv = $this->{'dotenv_' . $function}();
 
 			if ($dotenv) {
+				restore_error_handler();
+
 				return array_keys($dotenv->load());
 			}
 		}
@@ -125,43 +130,27 @@ class VursionCommand extends Command
 
 	protected function dotenv_2()
 	{
-		try {
-			return new Dotenv(base_path(), $this->env_file);
-		} catch (Exception $e) {
-			return;
-		}
+		return new Dotenv(base_path(), $this->env_file);
 	}
 
 	protected function dotenv_3()
 	{
-		try {
-			return Dotenv::create(base_path(), $this->env_file);
-		} catch (Exception $e) {
-			return;
-		}
+		return Dotenv::create(base_path(), $this->env_file);
 	}
 
 	protected function dotenv_4()
 	{
-		try {
-			$repository = \Dotenv\Repository\RepositoryBuilder::create()->withReaders([
-				new \Dotenv\Repository\Adapter\EnvConstAdapter(),
-				new \Dotenv\Repository\Adapter\ServerConstAdapter(),
-			])->make();
+		$repository = \Dotenv\Repository\RepositoryBuilder::create()->withReaders([
+			new \Dotenv\Repository\Adapter\EnvConstAdapter(),
+			new \Dotenv\Repository\Adapter\ServerConstAdapter(),
+		])->make();
 
-			return Dotenv::create($repository, base_path(), $this->env_file);
-		} catch (Exception $e) {
-			return;
-		}
+		return Dotenv::create($repository, base_path(), $this->env_file);
 	}
 
 	protected function dotenv_5()
 	{
-		try {
-			$repository = \Dotenv\Repository\RepositoryBuilder::createWithDefaultAdapters()->make();
-			return Dotenv::create($repository, base_path(), $this->env_file);
-		} catch (Exception $e) {
-			return;
-		}
+		$repository = \Dotenv\Repository\RepositoryBuilder::createWithDefaultAdapters()->make();
+		return Dotenv::create($repository, base_path(), $this->env_file);
 	}
 }
