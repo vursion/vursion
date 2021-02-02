@@ -15,7 +15,7 @@ jobs:
                 php: [5.6, 7.0, 7.1, 7.2, 7.3, 7.4, 8.0]
                 laravel: [5.4.*, 5.5.*, 5.6.*, 5.7.*, 5.8.*, 6.*, 7.*, 8.*]
                 version: [prefer-lowest, prefer-stable]
-                os: [ubuntu-latest, windows-latest]
+                os: [ubuntu-latest]
                 include:
                     - laravel: 5.4.*
                       testbench: 3.4.*
@@ -37,17 +37,37 @@ jobs:
                     - laravel: 5.5.*
                       php: 5.6
                     - laravel: 5.6.*
-                      php: [5.6, 7.0]
+                      php: 5.6
+                    - laravel: 5.6.*
+                      php: 7.0
                     - laravel: 5.7.*
-                      php: [5.6, 7.0]
+                      php: 5.6
+                    - laravel: 5.7.*
+                      php: 7.0
                     - laravel: 5.8.*
-                      php: [5.6, 7.0]
+                      php: 5.6
+                    - laravel: 5.8.*
+                      php: 7.0
                     - laravel: 6.*
-                      php: [5.6, 7.0, 7.1]
+                      php: 5.6
+                    - laravel: 6.*
+                      php: 7.0
+                    - laravel: 6.*
+                      php: 7.1
                     - laravel: 7.*
-                      php: [5.6, 7.0, 7.1]
+                      php: 5.6
+                    - laravel: 7.*
+                      php: 7.0
+                    - laravel: 7.*
+                      php: 7.1
                     - laravel: 8.*
-                      php: [5.6, 7.0, 7.1, 7.2]
+                      php: 5.6
+                    - laravel: 8.*
+                      php: 7.0
+                    - laravel: 8.*
+                      php: 7.1
+                    - laravel: 8.*
+                      php: 7.2
 
         name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.version }} - ${{ matrix.os }}
 

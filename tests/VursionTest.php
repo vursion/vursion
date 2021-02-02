@@ -6,7 +6,7 @@ use Vursion\Vursion\VursionServiceProvider;
 
 class VursionTest extends TestCase
 {
-    public function setUp(): void
+    public function setUp()
     {
         parent::setUp();
     }
