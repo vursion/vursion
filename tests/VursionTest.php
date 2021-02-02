@@ -34,11 +34,9 @@ class VursionTest extends TestCase
 
         $this->assertTrue(is_array($data));
 
-        $data = array_filter($data);
+        array_filter($data);
 
-        $this->assertNotEmpty($data);
-
-        $this->assertEquals(['VURSION_KEY'], $data);
+        $this->assertArrayHasKey('VURSION_KEY', $data);
     }
 
     public function test_it_can_collect_composer_json()
