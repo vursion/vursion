@@ -129,7 +129,9 @@ class VursionCommand extends Command
 			return new Dotenv(base_path(), $this->env_file);
 		} catch (\TypeError $error) {
 	        return;
-	    }
+		} catch (\Error $error) {
+			return;
+		}
 	}
 
 	protected function dotenv_3()
@@ -138,7 +140,9 @@ class VursionCommand extends Command
 			return Dotenv::create(base_path(), $this->env_file);
 		} catch (\TypeError $error) {
 	        return;
-	    }
+		} catch (\Error $error) {
+			return;
+		}
 	}
 
 	protected function dotenv_4()
@@ -150,9 +154,11 @@ class VursionCommand extends Command
 			])->make();
 
 			return Dotenv::create($repository, base_path(), $this->env_file);
-		} catch (\Error $error) {
+		} catch (\TypeError $error) {
 	        return;
-	    }
+		} catch (\Error $error) {
+			return;
+		}
 	}
 
 	protected function dotenv_5()
@@ -161,8 +167,10 @@ class VursionCommand extends Command
 			$repository = \Dotenv\Repository\RepositoryBuilder::createWithDefaultAdapters()->make();
 
 			return Dotenv::create($repository, base_path(), $this->env_file);
-		} catch (\Error $error) {
+		} catch (\TypeError $error) {
 	        return;
-	    }
+		} catch (\Error $error) {
+			return;
+		}
 	}
 }
