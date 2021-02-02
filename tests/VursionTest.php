@@ -32,7 +32,7 @@ class VursionTest extends TestCase
 
         $data = $this->mock->getEnvironmentVariableNames('.env.test');
 
-        $this->assertTrue(is_array($data);
+        $this->assertTrue(is_array($data));
         $this->assertNotEmpty($data);
 
         $this->assertEquals(['VURSION_KEY'], $data);
@@ -44,7 +44,7 @@ class VursionTest extends TestCase
 
         $data = $this->mock->getComposer();
 
-        $this->assertTrue(is_array($data);
+        $this->assertTrue(is_array($data));
         $this->assertNotEmpty($data);
 
         $this->assertArrayHasKey('require', $data);
@@ -62,7 +62,7 @@ class VursionTest extends TestCase
 
         $data = $this->mock->getComposerLock();
 
-        $this->assertTrue(is_array($data);
+        $this->assertTrue(is_array($data));
         $this->assertNotEmpty($data);
 
         $this->assertArrayHasKey('packages', $data);
