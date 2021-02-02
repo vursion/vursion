@@ -18,7 +18,7 @@ jobs:
                 os: [ubuntu-latest]
                 include:
                     - laravel: 5.4.*
-                      testbench: 3.4.*
+                      testbench: 3.4.2
                     - laravel: 5.5.*
                       testbench: 3.5.*
                     - laravel: 5.6.*

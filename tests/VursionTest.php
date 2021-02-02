@@ -18,12 +18,12 @@ class VursionTest extends TestCase
 
     public function test_it_can_get_the_laravel_version()
     {
-        $this->assertIsString(app()->version());
+        $this->assertTrue(is_string(app()->version()));
     }
 
     public function test_it_can_get_the_php_cli_version()
     {
-        $this->assertIsString(phpversion());
+        $this->assertTrue(is_string(phpversion()));
     }
 
     public function test_it_can_collect_env_keys()
@@ -32,7 +32,7 @@ class VursionTest extends TestCase
 
         $data = $this->mock->getEnvironmentVariableNames('.env.test');
 
-        $this->assertIsArray($data);
+        $this->assertTrue(is_array($data);
         $this->assertNotEmpty($data);
 
         $this->assertEquals(['VURSION_KEY'], $data);
@@ -44,7 +44,7 @@ class VursionTest extends TestCase
 
         $data = $this->mock->getComposer();
 
-        $this->assertIsArray($data);
+        $this->assertTrue(is_array($data);
         $this->assertNotEmpty($data);
 
         $this->assertArrayHasKey('require', $data);
@@ -62,7 +62,7 @@ class VursionTest extends TestCase
 
         $data = $this->mock->getComposerLock();
 
-        $this->assertIsArray($data);
+        $this->assertTrue(is_array($data);
         $this->assertNotEmpty($data);
 
         $this->assertArrayHasKey('packages', $data);
