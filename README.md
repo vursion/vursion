@@ -11,7 +11,15 @@ You can install the package via composer:
 composer require vursion/vursion
 ```
 
-The package will automatically register itself.
+***No need to register the service provider if you're using Laravel >= 5.5.
+The package will automatically register itself.***
+Once the package is installed, you can register the service provider in config/app.php in the providers array:
+```
+'providers' => [
+	...
+	Vursion\Vursion\VursionServiceProvider::class
+],
+```
 
 Configure your vursion API key in your `.env` file.
 ```bash

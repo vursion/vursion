@@ -76,11 +76,11 @@ class VursionCommand extends Command
 
 		$this->env_file = $file;
 
-		foreach ([2, 3, 4, 5] as $function) {
+		foreach ([5, 4, 3, 2] as $function) {
 			$dotenv = $this->{'dotenv_' . $function}();
 
 			if ($dotenv) {
-				return array_keys($dotenv->load());
+				return $dotenv;
 			}
 		}
 	}
@@ -126,7 +126,9 @@ class VursionCommand extends Command
 	protected function dotenv_2()
 	{
 		try {
-			return new Dotenv(base_path(), $this->env_file);
+			$dotenv = new Dotenv(base_path(), $this->env_file);
+
+			return $dotenv->getEnvironmentVariableNames();
 		} catch (\TypeError $error) {
 	        return;
 		} catch (\Error $error) {
@@ -137,7 +139,9 @@ class VursionCommand extends Command
 	protected function dotenv_3()
 	{
 		try {
-			return Dotenv::create(base_path(), $this->env_file);
+			$dotenv = Dotenv::create(base_path(), $this->env_file);
+
+			return $dotenv->getEnvironmentVariableNames();
 		} catch (\TypeError $error) {
 	        return;
 		} catch (\Error $error) {
@@ -153,7 +157,9 @@ class VursionCommand extends Command
 				new \Dotenv\Repository\Adapter\ServerConstAdapter(),
 			])->make();
 
-			return Dotenv::create($repository, base_path(), $this->env_file);
+			$dotenv = Dotenv::create($repository, base_path(), $this->env_file);
+
+			return array_keys($dotenv->load());
 		} catch (\TypeError $error) {
 	        return;
 		} catch (\Error $error) {
@@ -165,8 +171,9 @@ class VursionCommand extends Command
 	{
 		try {
 			$repository = \Dotenv\Repository\RepositoryBuilder::createWithDefaultAdapters()->make();
+			$dotenv     = Dotenv::create($repository, base_path(), $this->env_file);
 
-			return Dotenv::create($repository, base_path(), $this->env_file);
+			return array_keys($dotenv->load());
 		} catch (\TypeError $error) {
 	        return;
 		} catch (\Error $error) {
