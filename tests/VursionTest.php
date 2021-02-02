@@ -2,7 +2,6 @@
 
 namespace Vursion\Vursion\Tests;
 
-use Orchestra\Database\ConsoleServiceProvider;
 use Vursion\Vursion\VursionServiceProvider;
 
 class VursionTest extends TestCase
