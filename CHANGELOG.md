@@ -2,7 +2,7 @@
 
 All notable changes to `vursion` will be documented in this file
 
-## 0.0.13 - 2020-02-01
+## 0.0.13 - 2020-02-03
  - 🤷‍♂️ Forgot why I parsed the phpinfo() instead of just calling phpversion().
  - Add GitHub issue template.
  - Add GitHub test workflow.
