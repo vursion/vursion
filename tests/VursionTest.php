@@ -32,6 +32,18 @@ class VursionTest extends TestCase
         $this->assertFalse(empty(trim($version)));
     }
 
+    public function test_route_has_a_signed_url()
+    {
+        $shouldBeSigned = (version_compare(app()->version(), '5.6.12') >= 0);
+        $hasSignature   = strpos($this->mock->route, '?signature=');
+
+        if ($shouldBeSigned) {
+            $this->assertTrue($hasSignature !== false);
+        } else {
+            $this->assertTrue($hasSignature === false);
+        }
+    }
+
     public function test_it_can_get_the_php_version()
     {
         $response = $this->get($this->mock->route);
