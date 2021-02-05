@@ -18,12 +18,26 @@ class VursionTest extends TestCase
 
     public function test_it_can_get_the_laravel_version()
     {
-        $this->assertTrue(is_string(app()->version()));
+        $version = app()->version();
+
+        $this->assertTrue(is_string($version));
+        $this->assertFalse(empty(trim($version)));
     }
 
     public function test_it_can_get_the_php_cli_version()
     {
-        $this->assertTrue(is_string(phpversion()));
+        $version = phpversion();
+
+        $this->assertTrue(is_string($version));
+        $this->assertFalse(empty(trim($version)));
+    }
+
+    public function test_it_can_get_the_php_version()
+    {
+        $version = $this->mock->getPhpVersion();
+
+        $this->assertTrue(is_string($version));
+        $this->assertFalse(empty(trim($version)));
     }
 
     public function test_it_can_collect_env_keys()

@@ -24,6 +24,10 @@ abstract class TestCase extends Orchestra
         $this->loadStubs();
 
         $this->mock = $this->createPartialMock(VursionCommand::class, ['readFileContents']);
+
+        foreach (get_object_vars(new VursionCommand()) as $key => $value) {
+            $this->mock->{$key} = $value;
+        }
     }
 
     protected function getPackageProviders($app)

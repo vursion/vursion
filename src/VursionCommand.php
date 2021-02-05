@@ -14,13 +14,15 @@ class VursionCommand extends Command
 
 	protected $description = 'Send heartbeat to vursion.io';
 
-	protected $guzzle;
-
 	protected $key;
 
 	protected $enabled;
 
 	protected $env_file;
+
+	public $guzzle;
+
+	public $route;
 
 	public function __construct()
 	{
@@ -29,6 +31,8 @@ class VursionCommand extends Command
 		$this->key = config('vursion.key');
 
 		$this->enabled = config('vursion.enabled');
+
+		$this->route = (version_compare(app()->version(), '5.6.12') >= 0) ? \Illuminate\Support\Facades\URL::signedRoute('vursion') : route('vursion');
 
 		$this->guzzle = new Client([
 			'base_uri'    => 'https://www.vursion.io/api/v1/',
@@ -59,9 +63,7 @@ class VursionCommand extends Command
 
 	public function getPhpVersion()
 	{
-		$url = (version_compare(app()->version(), '5.6.12') >= 0) ? \Illuminate\Support\Facades\URL::signedRoute('vursion') : route('vursion');
-
-		$response = $this->guzzle->get($url);
+		$response = $this->guzzle->get($this->route);
 
 		if ($response->getStatusCode() === 200) {
 			return json_decode($response->getBody()->getContents());
