@@ -34,7 +34,10 @@ class VursionTest extends TestCase
 
     public function test_it_can_get_the_php_version()
     {
-        $version = $this->mock->getPhpVersion();
+        $response = $this->get($this->mock->route);
+        $response->assertStatus(200);
+
+        $version = $response->getData();
 
         $this->assertTrue(is_string($version));
         $this->assertFalse(empty(trim($version)));

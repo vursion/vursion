@@ -18,9 +18,9 @@ class VursionCommand extends Command
 
 	protected $enabled;
 
-	protected $env_file;
+	protected $guzzle;
 
-	public $guzzle;
+	protected $env_file;
 
 	public $route;
 
