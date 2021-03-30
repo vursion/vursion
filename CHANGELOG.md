@@ -2,9 +2,12 @@
 
 All notable changes to `vursion` will be documented in this file
 
-## 1.0.0 - 2020-03-01
+## 1.0.1 - 2021-03-01
+- Send values of `APP_ENV` and `APP_DEBUG` to the API.
 
-## 0.0.13 - 2020-02-03
+## 1.0.0 - 2021-03-01
+
+## 0.0.13 - 2021-02-03
  - 🤷‍♂️ Forgot why I parsed the phpinfo() instead of just calling phpversion().
  - Add GitHub issue template.
  - Add GitHub test workflow.

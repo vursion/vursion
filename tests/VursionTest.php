@@ -65,6 +65,16 @@ class VursionTest extends TestCase
         $this->assertArrayHasKey('VURSION_KEY', array_flip($data));
     }
 
+    public function test_it_can_read_nonsensitive_env_values()
+    {
+        $this->mockEnv();
+
+        $this->mock->getEnvironmentVariableNames('.env.test');
+
+        $this->assertEquals('testing', $_ENV['APP_ENV']);
+        $this->assertEquals('true', $_ENV['APP_DEBUG']);
+    }
+
     public function test_it_can_collect_composer_json()
     {
         $this->mockComposer();

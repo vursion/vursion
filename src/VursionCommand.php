@@ -49,13 +49,15 @@ class VursionCommand extends Command
 		if ($this->enabled && $this->key && $this->key !== '') {
 			$this->guzzle->post('heartbeat', [
 				'json' => [
-					'env'             => $this->getEnvironmentVariableNames('.env'),
 					'env.example'     => $this->getEnvironmentVariableNames('.env.example'),
+					'env'             => $this->getEnvironmentVariableNames('.env'),
 					'composer.json'   => $this->getComposer(),
 					'composer.lock'   => $this->getComposerLock(),
 					'laravel_version' => app()->version(),
 					'php_version' 	  => $this->getPhpVersion(),
 					'php_version_cli' => phpversion(),
+					'environment' 	  => $_ENV['APP_ENV'],
+					'debug' 	  	  => $_ENV['APP_DEBUG'],
 				],
 			]);
 		}
