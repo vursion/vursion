@@ -2,7 +2,7 @@
 
 All notable changes to `vursion` will be documented in this file
 
-## 1.0.1 - 2021-03-01
+## 1.0.1 - 2021-03-30
 - Send values of `APP_ENV` and `APP_DEBUG` to the API.
 
 ## 1.0.0 - 2021-03-01
