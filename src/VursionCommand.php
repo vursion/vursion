@@ -58,6 +58,8 @@ class VursionCommand extends Command
 					'php_version_cli' => phpversion(),
 					'environment' 	  => $_ENV['APP_ENV'],
 					'debug' 	  	  => $_ENV['APP_DEBUG'],
+					'package.json'	  => $this->getPackage(),
+					'package.lock'	  => $this->getPackageLock(),
 				],
 			]);
 		}
@@ -115,6 +117,39 @@ class VursionCommand extends Command
 		return [
 			'packages' 	   => $packages,
 			'packages-dev' => $packages_dev,
+		];
+	}
+
+	public function getPackage()
+	{
+		$data = $this->readFileContents('package.json');
+
+		return [
+			'require'     => ($data['dependencies'] ?? null),
+			'require-dev' => ($data['devDependencies'] ?? null),
+		];
+	}
+
+	public function getPackageLock()
+	{
+		$data = $this->readFileContents('package.json');
+
+		if ($data['lockfileVersion'] === 2) {
+			$packages = collect(($data['packages'] ?? []))->mapWithKeys(function ($package, $key) {
+				if ($key === '') {
+					return [];
+				}
+
+				return [str_replace('node_modules/', '', $key) => $package['version']];
+			})->toArray();
+		} elseif ($data['lockfileVersion'] === 1) {
+			$packages = collect(($data['dependencies'] ?? []))->mapWithKeys(function ($package, $key) {
+				return [$key => $package['version']];
+			})->toArray();
+		}
+
+		return [
+			'packages' => ($packages ?? null),
 		];
 	}
 

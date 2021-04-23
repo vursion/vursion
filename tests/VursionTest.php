@@ -108,4 +108,48 @@ class VursionTest extends TestCase
         $this->assertNotEmpty($data['packages']);
         $this->assertNotEmpty($data['packages-dev']);
     }
+
+    public function test_it_can_collect_package_json()
+    {
+        $this->mockPackage();
+
+        $data = $this->mock->getPackage();
+
+        $this->assertTrue(is_array($data));
+        $this->assertNotEmpty($data);
+
+        $this->assertArrayHasKey('require', $data);
+        $this->assertArrayHasKey('require-dev', $data);
+
+        $this->assertEquals($this->stub_package['dependencies'], $data['require']);
+        $this->assertEquals($this->stub_package['devDependencies'], $data['require-dev']);
+    }
+
+    public function test_it_can_collect_package_lock_v1()
+    {
+        $this->mockPackageLock(1);
+
+        $data = $this->mock->getPackageLock();
+
+        $this->assertTrue(is_array($data));
+        $this->assertNotEmpty($data);
+
+        $this->assertArrayHasKey('packages', $data);
+        $this->assertNotEmpty($data['packages']);
+        $this->assertArrayHasKey('gulp', $data['packages']);
+    }
+
+    public function test_it_can_collect_package_lock_v2()
+    {
+        $this->mockPackageLock(2);
+
+        $data = $this->mock->getPackageLock();
+
+        $this->assertTrue(is_array($data));
+        $this->assertNotEmpty($data);
+
+        $this->assertArrayHasKey('packages', $data);
+        $this->assertNotEmpty($data['packages']);
+        $this->assertArrayHasKey('gulp', $data['packages']);
+    }
 }
