@@ -80,7 +80,7 @@ abstract class TestCase extends Orchestra
     protected function mockPackageLock($version)
     {
         $this->mock->method('readFileContents')
-                ->with('package.json')
+                ->with('package-lock.json')
                 ->willReturn($this->{'stub_package_lock_v' . $version});
     }
 }

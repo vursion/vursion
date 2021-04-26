@@ -132,21 +132,15 @@ class VursionCommand extends Command
 
 	public function getPackageLock()
 	{
-		$data = $this->readFileContents('package.json');
+		$data = $this->readFileContents('package-lock.json');
 
-		if ($data['lockfileVersion'] === 2) {
-			$packages = collect(($data['packages'] ?? []))->mapWithKeys(function ($package, $key) {
-				if ($key === '') {
-					return [];
-				}
+		$packages = collect(($data['packages'] ?? ($data['dependencies'] ?? [])))->mapWithKeys(function ($package, $key) {
+			if ($key === '') {
+				return [];
+			}
 
-				return [str_replace('node_modules/', '', $key) => $package['version']];
-			})->toArray();
-		} elseif ($data['lockfileVersion'] === 1) {
-			$packages = collect(($data['dependencies'] ?? []))->mapWithKeys(function ($package, $key) {
-				return [$key => $package['version']];
-			})->toArray();
-		}
+			return [str_replace('node_modules/', '', $key) => $package['version']];
+		})->toArray();
 
 		return [
 			'packages' => ($packages ?? null),
