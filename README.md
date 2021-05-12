@@ -15,8 +15,8 @@ composer require vursion/vursion
 
 ***No need to register the service provider if you're using Laravel >= 5.5.
 The package will automatically register itself.***
-Once the package is installed, you can register the service provider in config/app.php in the providers array:
-```
+Once the package is installed, you can register the service provider in `config/app.php` in the providers array:
+```php
 'providers' => [
 	...
 	Vursion\Vursion\VursionServiceProvider::class
