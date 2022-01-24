@@ -2,6 +2,9 @@
 
 All notable changes to `vursion` will be documented in this file
 
+## 1.2.0 - 2021-12-22
+- Support PHP 8.1
+
 ## 1.1.0 - 2021-04-26
 - Send data of `package.json` and `package.lock` to the API.
 
