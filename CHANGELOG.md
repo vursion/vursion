@@ -2,6 +2,9 @@
 
 All notable changes to `vursion` will be documented in this file
 
+## 1.5.1 - 2023-04-11
+- Add useful info to the about command on Laravel installations >= 9.21
+
 ## 1.5.0 - 2023-02-15
 - Support Laravel 10
 
