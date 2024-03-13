@@ -2,7 +2,7 @@
 
 All notable changes to `vursion` will be documented in this file
 
-## 1.7.0 - 2023-11-24
+## 1.7.0 - 2024-03-13
 - Support Laravel 11
 
 ## 1.6.0 - 2023-11-24
