@@ -2,6 +2,9 @@
 
 All notable changes to `vursion` will be documented in this file
 
+## 1.7.1 - 2024-11-05
+- Switch to new domain name
+
 ## 1.7.0 - 2024-03-13
 - Support Laravel 11
 

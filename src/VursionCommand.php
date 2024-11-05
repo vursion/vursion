@@ -12,7 +12,7 @@ class VursionCommand extends Command
 
 	protected $signature = 'vursion:heartbeat';
 
-	protected $description = 'Send heartbeat to vursion.io';
+	protected $description = 'Send heartbeat to vursion.be';
 
 	protected $key;
 
