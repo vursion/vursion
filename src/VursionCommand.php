@@ -35,7 +35,7 @@ class VursionCommand extends Command
 		$this->route = (version_compare(app()->version(), '5.6.12') >= 0) ? \Illuminate\Support\Facades\URL::signedRoute('vursion') : route('vursion');
 
 		$this->guzzle = new Client([
-			'base_uri'    => 'https://www.vursion.io/api/v1/',
+			'base_uri'    => 'https://www.vursion.be/api/v1/',
 			'http_errors' => false,
 			'verify'      => false,
 			'headers' 	  => [
