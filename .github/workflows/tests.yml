@@ -12,7 +12,7 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                php: [7.1, 7.2, 7.3, 7.4, 8.0, 8.1, 8.2, 8.3]
+                php: [7.1, 7.2, 7.3, 7.4, 8.0, 8.1, 8.2, 8.3, 8.4]
                 laravel: [5.5.*, 5.6.*, 5.7.*, 5.8.*, 6.*, 7.*, 8.*, 9.*, 10.*, 11.*]
                 version: [prefer-stable]
                 os: [ubuntu-latest]
@@ -46,6 +46,8 @@ jobs:
                       php: 8.2
                     - laravel: 5.5.*
                       php: 8.3
+                    - laravel: 5.5.*
+                      php: 8.4
                     - laravel: 5.6.*
                       php: 8.0
                     - laravel: 5.6.*
@@ -54,6 +56,8 @@ jobs:
                       php: 8.2
                     - laravel: 5.6.*
                       php: 8.3
+                    - laravel: 5.6.*
+                      php: 8.4
                     - laravel: 5.7.*
                       php: 8.0
                     - laravel: 5.7.*
@@ -62,6 +66,8 @@ jobs:
                       php: 8.2
                     - laravel: 5.7.*
                       php: 8.3
+                    - laravel: 5.7.*
+                      php: 8.4
                     - laravel: 5.8.*
                       php: 8.0
                     - laravel: 5.8.*
@@ -70,6 +76,8 @@ jobs:
                       php: 8.2
                     - laravel: 5.8.*
                       php: 8.3
+                    - laravel: 5.8.*
+                      php: 8.4
                     - laravel: 6.*
                       php: 7.1
                     - laravel: 6.*
@@ -78,6 +86,8 @@ jobs:
                       php: 8.2
                     - laravel: 6.*
                       php: 8.3
+                    - laravel: 6.*
+                      php: 8.4
                     - laravel: 7.*
                       php: 7.1
                     - laravel: 7.*
@@ -86,6 +96,8 @@ jobs:
                       php: 8.2
                     - laravel: 7.*
                       php: 8.3
+                    - laravel: 7.*
+                      php: 8.4
                     - laravel: 8.*
                       php: 7.1
                     - laravel: 8.*

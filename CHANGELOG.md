@@ -2,6 +2,9 @@
 
 All notable changes to `vursion` will be documented in this file
 
+## 1.7.2 - 2024-11-25
+- Support PHP 8.4
+
 ## 1.7.1 - 2024-11-05
 - Switch to new domain name
 
