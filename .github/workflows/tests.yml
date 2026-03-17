@@ -118,6 +118,8 @@ jobs:
                       php: 7.1
                     - laravel: 8.*
                       php: 7.2
+                    - laravel: 8.*
+                      php: 8.5
                     - laravel: 9.*
                       php: 7.1
                     - laravel: 9.*
@@ -126,6 +128,8 @@ jobs:
                       php: 7.3
                     - laravel: 9.*
                       php: 7.4
+                    - laravel: 9.*
+                      php: 8.5
                     - laravel: 10.*
                       php: 7.1
                     - laravel: 10.*
@@ -187,12 +191,14 @@ jobs:
                   php-version: ${{ matrix.php }}
                   extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick
                   coverage: none
-                  tools: composer:v2
+                  tools: composer:v2.2
 
             - name: Install dependencies
+              env:
+                COMPOSER_NO_AUDIT: 1
               run: |
                 composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
-                composer update --${{ matrix.version }} --prefer-dist --no-interaction --no-audit
+                composer update --${{ matrix.version }} --prefer-dist --no-interaction
 
             - name: Execute tests
               run: vendor/bin/phpunit
