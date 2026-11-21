@@ -2,6 +2,9 @@
 
 All notable changes to `vursion` will be documented in this file
 
+## 1.10.0 - 2026-11-21
+- Support PHP 8.6
+
 ## 1.9.0 - 2026-03-17
 - Support Laravel 13
 - Support PHP 8.5
